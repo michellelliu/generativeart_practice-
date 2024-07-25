@@ -1,0 +1,81 @@
+<html>
+	<body>
+		<canvas width ="600" height="600"></canvas>
+		<script> 
+			let canvas = document.querySelector('canvas');
+			let context = canvas.getContext('2d');
+
+			context.fillStyle = 'blue';
+			//context.fillRect(100,100, 400, 400); 
+
+			//rectangle
+			context.lineWidth = 4;
+			context.beginPath();
+			context.rect(100,100,400,400);
+			//context.stroke();
+
+			//circle 
+			context.beginPath();
+			context.arc(300, 300, 100, 0, Math.PI * 2);
+			//context.stroke();
+
+			//arrays and loops
+			for (let i = 0; i < 5; i++) {
+				for (let j = 0; j < 5; j ++) {
+					let width = 60;
+					let height = 60;
+					let gap = 20;
+					let x = 100 + (width + gap) * i;
+					let y =  + (height + gap) * j;
+					
+					context.beginPath();
+					context.rect(x, y, width, height);
+					context.stroke();
+
+					if (i > 0 && i < 4) {
+						context.beginPath();
+						context.rect(x + 8, y + 8, width - 16, height - 16); 
+						context.stroke();
+					}
+				}
+				
+			}
+
+			
+
+
+			<!--variables-->
+			let year = 2042;
+			let nextYear = year + 1;
+
+			let dinner = 'salad';
+			let sentence = 'Tonight will be ' + dinner;
+
+
+			<!--word functions-->
+			function saySomething(param) {
+				console.log(param);
+			}
+
+			saySomething(sentence);
+
+			function add(a,b) {
+				return a + b;
+			}
+
+			let result = add(5,7);
+			console.log(result)
+
+
+
+			<!--arrow functions-->
+			let multiply = (a,b) => {
+				return a * b;
+
+			}
+
+			console.log(multiply(5,7));
+
+		</script>
+	</body>
+</html>
