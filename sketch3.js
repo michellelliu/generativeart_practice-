@@ -15,12 +15,15 @@ const sketch = () => {
       
     context.fillStyle = 'black';
       
-    const x = width * 0.5; // square top corner 50% across
-    const y = height * 0.5;// square top corner 50% up/down
+    const cx = width * 0.5; // center of circle
+    const cy = height * 0.5;// center of circle
+      
     const w = width * 0.01;
     const h = height * 0.1;
+    let x, y;
     
     const num = 12;
+    const radius = width * 0.3;
     
     // loop for num blocks
     for (let i = 0; i < num; i ++){
@@ -28,9 +31,12 @@ const sketch = () => {
         const slice = degToRad(360/num);
         const angle = slice * i;
         
+        x = cx + radius * Math.sin(angle);
+        y = cy + radius * Math.cos(angle);
+        
         context.save();
         context.translate(x,y);
-        context.rotate(angle);
+        context.rotate(-angle);
 
         //rectangle
         context.beginPath();
