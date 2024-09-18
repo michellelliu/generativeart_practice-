@@ -13,19 +13,35 @@ const settings = {
 
 // HOUSE INFORMATION
 const houseNames = [ "COLUMBA","RUTHERFORD", "MACFARLANE", "MCRAE"]
-//colour palettes for each house
-const houseColours = {
-    "COLUMBA": ['#C52233', '#C20303', '#CD5D67', '#D90202','#C62D2A'],
-    "RUTHERFORD" : ['#F7B538', '#FDF8E1','#F4AC32', '#FFF75E'],
-    "MACFARLANE" : ['#004BA8', '#003559', '#00A6FB', '#5899E2'],
-    "MCRAE" : ['#212529','#DEE2E6', '#ADB5BD', '#E9ECEF', '#495057']
+//define house information
+const houseInfo = {
+    "COLUMBA": {
+        colours: ['#C52233', '#7C0606', '#CD5D67', '#D90202','#FBD9D3'],
+        points: 100
+    },
+    
+    "RUTHERFORD": {
+    colours: ['#F7B538', '#FDF8E1','#F4AC32', '#FFF75E'],
+    points: 150
+    },
+    
+    "MACFARLANE" :{
+        colours: ['#004BA8', '#003559', '#00A6FB', '#5899E2'],
+        points: 200
+    },
+    
+    "MCRAE": {
+        colours: ['#212529','#DEE2E6', '#ADB5BD', '#E9ECEF', '#495057'],
+        points: 250
+    }
 };
 ///random house colour index
 const randomHouseIndex = Math.floor(Math.random() * houseNames.length);
-const selectedHouseName = houseNames[randomHouseIndex];
-const selectedHouseColours = houseColours[selectedHouseName];
 
-let housePoints = "";
+const selectedHouseName = houseNames[randomHouseIndex];
+const selectedHouse = houseInfo[selectedHouseName];
+const selectedHouseColours = selectedHouse.colours;
+const housePoints = selectedHouse.points;
 
 //text size range
 const minFontSize = 10;
@@ -83,7 +99,7 @@ const sketch = ({ context, width, height }) => {
                 context.font = `30px Serif`;
                 context.textAlign = 'left';
                 context.textBaseline = 'middle';
-                context.fillText('points: 100', 20, 1050);
+                context.fillText(`points: ${housePoints}`, 20, height - 20);
                 
             }
         }
@@ -93,10 +109,8 @@ const sketch = ({ context, width, height }) => {
             agent.draw(context);
             agent.bounce(width, height);
         });
-      
   };
 };
-
 canvasSketch(sketch, settings);
 
 class Vector {
@@ -148,4 +162,3 @@ class Agent {
         context.restore();
     }
 }
-
