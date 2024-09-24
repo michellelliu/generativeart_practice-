@@ -17,11 +17,8 @@ const randomRange = (min, max) => {
     return Math.random() * (max - min) + min;
 };
 
-// let houseColours = ['#F7B538','#C62D2A','#004BA8', '#495057'];
-// let houseNames = ['RU','CO','MF','MC'];
-let houseColours = ['#F7B538','#F7B538','#F7B538','#F7B538','#F7B538','#C62D2A','#C62D2A','#C62D2A','#C62D2A','#C62D2A','#004BA8','#004BA8','#004BA8','#004BA8','#004BA8', '#495057', '#495057', '#495057', '#495057', '#495057'];
-let houseNames = ['RU','RU','RU','RU','RU','CO','CO','CO','CO','CO','MF','MF','MF','MF','MF','MC','MC','MC','MC','MC'];
-
+let houseColours = ['#F7B538','#C62D2A','#004BA8', '#495057'];
+let houseNames = ['RU','CO','MF','MC'];
 
 //pick a random inedex in houseColours
 randomColour = Math.floor(Math.random() * houseColours.length);
@@ -32,20 +29,26 @@ const sketch = () => {
     context.fillStyle = houseColours[randomColour]; //house colour
     context.fillRect(0, 0, width, height);
     
-    //rect fill colour
+    //house text
     context.fillStyle = 'white';
     context.font = '200px serif';
     context.textBaseline = 'middle';
     context.textAlign = 'center';
-      
     context.save();
     context.translate(width * 0.5, height* 0.5);
     context.fillText(houseNames[randomColour],0,0); //house name
     context.restore();
+      
+    //points text
+    context.font = '70px serif';
+    context.save();
+    context.translate(width * 0.5, (height* 0.5) + 150);
+    context.fillText("0200",0,0); //house points
+    context.restore();
     
       
-    const cx = width * 0.5; // center of circle
-    const cy = height * 0.5;// center of circle
+    const cx = width * 0.5; // center of design
+    const cy = height * 0.5;// center of design
       
     const w = width * 0.01;
     const h = height * 0.1;
@@ -68,7 +71,7 @@ const sketch = () => {
         context.rotate(-angle);
         context.scale(random.range(0.1,2),random.range(0.2,0.5));
 
-        //rectangle
+        //rectangles
         context.beginPath();
         context.rect(-w * 0.5,random.range(0, h*0.5), w, h);
         context.fill();
@@ -79,7 +82,7 @@ const sketch = () => {
         context.rotate(-angle);
         
         context.lineWidth = random.range(5,20);
-        //arc
+        //arcs
         context.beginPath();
         context.arc(0, 0, radius * random.range(0.7,1.3), slice * random.range(1,-8), slice * random.range(1,5));
         //arc stroke style

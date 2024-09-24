@@ -30,12 +30,12 @@ const randomRange = (min, max) => {
     return Math.random() * (max - min) + min;
 };
 
-//House data
+//House data in order - RU,CO, MF, MC
 let housePoints = ["0326", "0134", "0299", "0235"];
 const houseColours = ['#F7B538','#C62D2A','#004BA8','#495057'];
 const houseNames = ['RU','CO','MF','MC'];
 const totalHouses = houseColours.length;
-const repeatNum = 3; //num of house repeats
+const repeatNum = 5; //num of house repeats
 
 
 const housePointsCycle = [];
